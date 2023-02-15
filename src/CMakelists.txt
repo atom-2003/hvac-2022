@@ -1,0 +1,15 @@
+set(HVAC_2022_HEADERS
+    "centroid.h"
+    "footstep.h"
+    "robot.h"
+    )
+
+set(HVAC_2022_SOURCES
+    "centroid.cpp"
+    "footstep.cpp"
+    "robot.cpp"
+    )
+
+
+choreonoid_add_library(hvac_2022_lib STATIC ${HVAC_2022_HEADERS} ${HVAC_2022_SOURCES})
+target_link_libraries(hvac_2022_lib CnoidBody)
