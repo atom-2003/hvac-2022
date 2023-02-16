@@ -11,24 +11,24 @@ class Footstep{
     private:
         /* data */
     public:
-        struct step
-        {
-            double stride;
-            double spacing;
-            double turn;
-            int    side;
-
-            Vector3 foot_pos[2];
-        };
-
-    public:
         vector<step> steps;
-        void GeneratePos();
+        void GeneratePos(Param &param);
 
         Footstep(/* args */);
-    };
-    }
+};
 
+struct step
+{
+    double stride;
+    double spacing;
+    double turn;
+    int    side;
+
+    Vector3 foot_pos[2];
+    Vector3 zmp_pos;
+    Vector3 vrp_pos;
+    Vector3 dcm_pos;
+};
 
 }
 }

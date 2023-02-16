@@ -1,4 +1,5 @@
 #include "footstep.h"
+#include "robot.h"
 
 namespace cnoid{
 namespace hvac2022{
@@ -16,7 +17,7 @@ Footstep::Footstep(/* args */)
 
 
 // generate foot position
-void Footstep::GeneratePos()
+void Footstep::GeneratePos(Param &param)
 {
     int nstep = steps.size();
     for (int i = 0; i < nstep-1; i++)
@@ -30,6 +31,20 @@ void Footstep::GeneratePos()
         st1.side = !st0.side;
         st1.foot_pos[sup] = st0.foot_pos[swg];
         st1.foot_pos[swg] = st1.foot_pos[sup] + Vector3(st1.stride, (swg - sup)*st1.spacing, 0.0);
+    }
+
+    double T = sqrt(param.com_height / param.g.z());
+    for (int i = nstep; i > 0; i--)
+    {
+        step& st = steps[i];
+        st.zmp_pos = st.foot_pos[st.side];
+        st.vrp_pos = st.zmp_pos + Vector3(0.0, 0.0, param.com_height);
+        if (i == nstep) st.dcm_pos = st.vrp_pos;
+        else
+        {
+            step& st_next = steps[i + 1];
+            st.dcm_pos = st.vrp_pos + exp(-(param.Ts + param.Td)/T)*(st_next.dcm_pos - st.vrp_pos);
+        }
     }
 }
 

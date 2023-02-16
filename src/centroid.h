@@ -2,7 +2,7 @@
 
 #include <cnoid/EigenTypes>
 #include "footstep.h"
-#include "centroid.h"
+#include "robot.h"
 
 namespace cnoid{
 namespace hvac2022{
@@ -19,13 +19,16 @@ class Centroid
         Vector3 dcm_pos;
         Vector3 dcm_vel;
         Vector3 vrp_pos;
-        Vector3 vrp_vel;
+        //Vector3 vrp_vel;
 
-        void CalcComState(Vector3 &pos, Vector3 &vel); // Englsberger とかの方法で重心軌道計算する
-        void CalcDcmState(Vector3 &pos, Vector3 &vel);
-        void CalcVrpState(Vector3 &pos, Vector3 &vel);
+        double  k_dcm;
+
+        void CalcComRef(Vector3 &pos, Vector3 &vel); // Englsberger とかの方法で重心軌道計算する
+        void CalcDcmRef(double dt);
+        void CalcVrpRef(Footstep &footstep, Param &param, double dt);
+
+        void Update(Vector3& pos, Vector3& vel, double dt);
     	Centroid();
-    private:
 
 };
 }
