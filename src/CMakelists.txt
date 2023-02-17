@@ -2,6 +2,7 @@ set(HVAC_2022_HEADERS
     "centroid.h"
     "footstep.h"
     "robot.h"
+    "param.h"
     )
 
 set(HVAC_2022_SOURCES
