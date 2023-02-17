@@ -27,7 +27,7 @@ class Centroid
         void CalcDcmRef(double dt);
         void CalcVrpRef(Footstep &footstep, Param &param, double dt);
 
-        void Update(Vector3& pos, Vector3& vel, double dt);
+        void Update(Vector3& pos, Vector3& vel, double dt); // ëΩï™Ç±Ç±Ç≈DCMÇêßå‰Ç∑ÇÈÇ©Ç»
     	Centroid();
 
 };
