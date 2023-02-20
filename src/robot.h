@@ -28,16 +28,6 @@ public:
 	Robot();
 };
 
-
-struct Param
-{
-	Vector3 g;
-	double  mass;
-	double  com_height;
-	double  Td;
-	double  Ts;
-};
-
 struct Hand {
 	// hand position and orientation 
 };

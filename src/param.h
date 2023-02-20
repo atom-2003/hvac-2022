@@ -7,8 +7,8 @@ struct Param
 	Vector3 g;
 	double  mass;
 	double  com_height;
-	double  Td;
-	double  Ts;
+	double  Td; // double support duration
+	double  Ts; // single support duration
 
 	Param();
 };

@@ -16,9 +16,10 @@ Footstep::Footstep(/* args */)
 }
 
 
-// generate foot position
+// generate foot position, ZMP position and DCM position
 void Footstep::GeneratePos(Param &param)
 {
+    // footprint pos
     int nstep = steps.size();
     for (int i = 0; i < nstep-1; i++)
     {
@@ -33,7 +34,9 @@ void Footstep::GeneratePos(Param &param)
         st1.foot_pos[swg] = st1.foot_pos[sup] + Vector3(st1.stride, (swg - sup)*st1.spacing, 0.0);
     }
 
-    double T = sqrt(param.com_height / param.g.z());
+    // zmp and dcm pos by recursion
+    double T     = sqrt(param.com_height / param.g.z());
+    double Tstep = param.Ts + param.Td;
     for (int i = nstep; i > 0; i--)
     {
         step& st = steps[i];
@@ -48,5 +51,5 @@ void Footstep::GeneratePos(Param &param)
     }
 }
 
-}
-}
+} // namespace hvac2022
+} // namespace cnoid
