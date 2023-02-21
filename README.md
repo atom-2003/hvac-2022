@@ -6,8 +6,9 @@ HVAC official page: https://ytazz.github.io/vnoid/
 ## Required
 - Choreonoid (ver. 1.8 or later) https://github.com/choreonoid/choreonoid
 
-## Developers
+## Contributor
 - atom-2003
 - MIYATANIKoki
+- flyaway11
 
  
