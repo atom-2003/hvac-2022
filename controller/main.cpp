@@ -4,11 +4,11 @@
 #include "myrobot.h"
 
 using namespace cnoid;
-//using namespace cnoid::hvac2022;
+using namespace cnoid::hvac2022;
 
 class HVAC_2022_Controller : public SimpleController{
     public:
-        //MyRobot* robot;
+        MyRobot* robot;
 
     public:
         virtual bool configure(SimpleControllerConfig* config){
@@ -16,12 +16,13 @@ class HVAC_2022_Controller : public SimpleController{
         }
 
         virtual bool initialize(SimpleControllerIO* io){
-            // ‰½‚ç‚©‚Ì‰Šú‰»‚ğs‚¤
+            robot = new MyRobot;
+            robot->Init(io);
             return true;
         }
 
         virtual bool control(){
-            //robot->Control();@‚±‚ñ‚ÈŠ´‚¶‚Å‰½‚ç‚©‚Ì§Œä‚ğs‚¤
+            robot->Control();
             return true;
         }
 };
