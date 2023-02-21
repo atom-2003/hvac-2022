@@ -16,6 +16,7 @@ struct Param
 Param::Param() {
 	g = Vector3(0.0, 0.0, 9.8);
 	mass = 50;
+	com_height = 0.75;
 	Td   = 0.0;
 	Ts   = 0.5;
 }

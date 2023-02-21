@@ -52,16 +52,12 @@ void Centroid::Update(Footstep& footstep, Param &param, double dt) {
 	vrp_pos_ref = vrp + (1 + k_dcm * T) * (dcm_pos - dcm_pos_ref);
 	zmp_pos_ref = vrp_pos_ref - Vector3(0.0, 0.0, param.com_height);
 
-	// calc DCM derivative
+	// update state variables of centroid
 	Vector3 dcm_d = (1 / T) * (dcm_pos_ref - vrp_pos_ref);
-
-	// calc CoM acceleration
-	com_acc_ref = (1 / T) * (dcm_d - com_vel_ref);
-
-	// update DCM
-	dcm_pos_ref += dcm_d * dt;
-
-	//Vector3 com_acc = (1 / T * T) * (com_pos - vrp_pos);
+	dcm_pos     += dcm_d * dt;
 	com_vel_ref += (1 / T) * (dcm_pos_ref - com_pos_ref);
 	com_pos_ref += com_vel_ref * dt;
+
+	// additional information
+	com_acc_ref = (1 / T) * (dcm_d - com_vel_ref);
 }

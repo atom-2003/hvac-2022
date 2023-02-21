@@ -1,5 +1,6 @@
 #include "footstep.h"
 #include "robot.h"
+#include "param.h"
 
 namespace cnoid{
 namespace hvac2022{

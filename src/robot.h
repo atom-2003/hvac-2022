@@ -16,7 +16,7 @@ public:
 	ForceSensor*        foot_force_sensor[2];  ///< handle to force sensro of Choreonoid attached to each foot
 
 	double dt;   // time step length
-	double time; // simulation timer
+	double time; // plannning timer
 
 	// 0: right, 1: left
 	Hand hand[2];
@@ -31,11 +31,21 @@ public:
 struct Hand {
 	// hand position and orientation 
 };
+
+// foot position and orientation
 struct Foot {
-	// foot position and orientation
+	Vector3 pos;
+	Vector3 vel;
+	Vector3 acc;
+	Vector3 ori;
 };
+// base link position and orientation
 struct Base {
-	// base link position and orientation
+	Vector3 pos;
+	Vector3 vel;
+	Vector3 acc;
+	Vector3 ori;
+	Vector3 angvel;
 };
 
 }
