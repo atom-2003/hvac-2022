@@ -1,13 +1,13 @@
 #include "robot.h"
 #include "centroid.h"
 #include "footstep.h"
+#include "param.h"
 #include <cnoid/Body>
 
 namespace cnoid {
 namespace hvac2022{
 
 Robot::Robot() {
-	base_actuation = false;
 
 	base_acc_sensor_name    = "gsensor";
 	base_gyro_sensor_name   = "gyrosensor";
@@ -17,6 +17,8 @@ Robot::Robot() {
 	gyro_axis_x = Vector3(1.0, 0.0, 0.0);
 	gyro_axis_y = Vector3(0.0, 1.0, 0.0);
 	gyro_axis_z = Vector3(0.0, 0.0, 1.0);
+
+	base_actuation = false;
 }
 
 // configure and initialize handle of robot body and sensors
@@ -143,8 +145,8 @@ void Robot::Sense(){
 			Vector3 m = foot_force_sensor[i]->F().segment<3>(3);
 			for (int j = 0; j < 3; j++)
 			{
-				foot[i].force[j]  = f[j];
-				foot[i].moment[j] = m[j];
+				//foot[i].force[j]  = f[j];
+				//foot[i].moment[j] = m[j];
 			}
 		}
 	}
@@ -154,7 +156,7 @@ void Robot::Actuate(){
 	{
 		Link* lnk = io_body->link(0);
 		lnk->p() = base.pos_ref;
-		lnk->R() = base.ori_ref.matrix();
+		//lnk->R() = base.ori_ref.matrix(); //TODO: ori_ref‚ÍQuartanionŒ^‚É‚·‚é
 	}
 	for (int i = 0; i < io_body->numJoints(); i++)
 	{

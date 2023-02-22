@@ -2,20 +2,11 @@
 
 #include <cnoid/EigenTypes>
 #include <vector>
+#include "param.h"
 using namespace std;
 
 namespace cnoid {
 namespace hvac2022 {
-
-class Footstep{
-    private:
-        /* data */
-    public:
-        vector<step> steps;
-        void GeneratePos(Param &param);
-
-        Footstep(/* args */);
-};
 
 struct step
 {
@@ -28,6 +19,18 @@ struct step
     Vector3 zmp_pos;
     Vector3 vrp_pos;
     Vector3 dcm_pos;
+
+    step();
+};
+
+class Footstep{
+    private:
+        /* data */
+    public:
+        vector<step> steps;
+        void GeneratePos(Param &param);
+
+        Footstep(/* args */);
 };
 
 }

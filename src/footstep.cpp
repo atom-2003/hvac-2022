@@ -1,9 +1,19 @@
 #include "footstep.h"
-#include "robot.h"
-#include "param.h"
 
 namespace cnoid{
 namespace hvac2022{
+
+step::step()
+{
+    stride  = 0.0;
+    spacing = 0.0;
+    turn    = 0.0;
+    foot_pos[0] = Vector3(0.0, 0.0, 0.0);
+    foot_pos[1] = Vector3(0.0, 0.0, 0.0);
+    zmp_pos = Vector3(0.0, 0.0, 0.0);
+    vrp_pos = Vector3(0.0, 0.0, 0.0);
+    dcm_pos = Vector3(0.0, 0.0, 0.0);
+}
 
 Footstep::Footstep(/* args */)
 {

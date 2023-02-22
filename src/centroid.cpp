@@ -1,7 +1,4 @@
-#include "footstep.h"
 #include "centroid.h"
-#include "robot.h"
-#include "param.h"
 
 #include <cmath>
 
@@ -18,6 +15,8 @@ Centroid::Centroid() {
 	zmp_pos = Vector3(0.0, 0.0, 0.0);
 	zmp_vel = Vector3(0.0, 0.0, 0.0);
 	vrp_pos = Vector3(0.0, 0.0, 0.0);
+
+	vrp_pos_ref = Vector3(0.0, 0.0, 0.0);
 
 	k_dcm = 10.0;
 }

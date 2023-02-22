@@ -1,4 +1,6 @@
 #include "myrobot.h"
+#include <cnoid/EigenUtil>
+
 using namespace std;
 
 namespace cnoid {
@@ -53,6 +55,36 @@ void MyRobot::Control() {
 	//hand[1].ori_ref = Vector3(0.0, 0.0, 0.0);
 
 	// ここで逆運動学計算する
+	VectorXd foot_r(6);
+	VectorXd foot_l(6);
+	VectorXd hand_r(6);
+	VectorXd hand_l(6);
+	Isometry3 T;
+	T.linear() = rotFromRpy(Vector3(foot_r.tail<3>()));
+	T.translation() = foot_r.head<3>();
+	if (baseToFoot_R->calcInverseKinematics(T))
+	{
+		for (int i = 0; i < baseToFoot_R->numJoints(); i++)
+		{
+			Link* jnt = baseToFoot_R->joint(i);
+			joint[jnt->jointId()].qref = jnt->q();
+		}
+	}
+	baseToFoot_R->calcInverseKinematics();
+
+	T.linear() = rotFromRpy(Vector3(foot_l.tail<3>()));
+	T.translation() = foot_l.head<3>();
+	if (baseToFoot_L->calcInverseKinematics(T))
+	{
+		for (int i = 0; i < baseToFoot_L->numJoints(); i++)
+		{
+			Link* jnt = baseToFoot_L->joint(i);
+			joint[jnt->jointId()].qref = jnt->q();
+		}
+	}
+	baseToFoot_L->calcInverseKinematics(T);
+
+	// トルク指令値
 	Robot::Actuate();
 	time += dt;
 }

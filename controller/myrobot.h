@@ -15,7 +15,7 @@ public:
 
 	int plan_cycle;
 	
-	Param param;
+	Param    param;
 	Centroid centroid;
 	Footstep footstep;
 

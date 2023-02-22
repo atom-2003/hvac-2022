@@ -114,7 +114,8 @@ links:
       -
         type: Visual
         resource:
-          uri: "HeadY.stl"
+          #uri: "HeadY.stl"
+          uri: "HeadY.dae"
       -
         type: Collision
         elements:
