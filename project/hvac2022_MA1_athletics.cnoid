@@ -132,7 +132,7 @@ items:
               data: 
                 isNoDelayMode: false
                 controllerOptions: ""
-                controller: "vnoid_sample_controller"
+                controller: "hvac_athletics"
                 base_directory: "Controller directory"
                 reloading: false
                 export_symbols: false
